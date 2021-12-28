@@ -1,69 +1,102 @@
 import React from 'react'
-import './App.css';
-const Register = () => {
+import Button from '@mui/material/Button';
+import { Form, Formik, Field, ErrorMessage } from 'formik'
+import * as yup from "yup";
+import Kerror from './Home_Com/Kerror';
+
+const validationSchema = yup.object({
+
+    EmailAddress: yup.string().required("Required!"),
+    MobileNo:yup.number().required(" Required"),
+    CreatePassword:yup.string().required("Required")
+});
+
+
+const RegisterSelf = () => {
     return (
         <div>
-            <section className="vh-100 bg-image" >
-                <div className="mask d-flex align-items-center h-100 gradient-custom-3">
-                    <div className="container h-100">
-                        <div className="row d-flex justify-content-center align-items-center h-100">
-                            <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                             {/* <div className="card" style="border-radius: 15px;"> */}
-                             <div className="card" style={{borderRadius: "15px"}}>
-                                    <div className="card-body p-5">
-                                        <h2 className="text-uppercase text-center mb-5">Create an account</h2>
+            <div><h3>Register Free!!</h3></div>
 
-                                        <form>
+            <Formik
 
-                                            <div className="form-outline mb-4">
-                                                <input type="text" id="form3Example1cg" className="form-control form-control-lg" />
-                                                <label className="form-label" for="form3Example1cg">Your Name</label>
-                                            </div>
+                validationSchema={validationSchema}
 
-                                            <div className="form-outline mb-4">
-                                                <input type="email" id="form3Example3cg" className="form-control form-control-lg" />
-                                                <label className="form-label" for="form3Example3cg">Your Email</label>
-                                            </div>
+                initialValues={{
+                    EmailAddress: "",
+                    CreatePassword:"",
+                    MobileNo:"",
+                    profilecreatingfor:"",
+                    DateOfBirth:"",
+                     
+                }}>
+                {/* WHAT WILL HAPPEN ON SUBMIT */}
 
-                                            <div className="form-outline mb-4">
-                                                <input type="password" id="form3Example4cg" className="form-control form-control-lg" />
-                                                <label className="form-label" for="form3Example4cg">Password</label>
-                                            </div>
 
-                                            <div className="form-outline mb-4">
-                                                <input type="password" id="form3Example4cdg" className="form-control form-control-lg" />
-                                                <label className="form-label" for="form3Example4cdg">Repeat your password</label>
-                                            </div>
 
-                                            <div className="form-check d-flex justify-content-center mb-5">
-                                                <input
-                                                    className="form-check-input me-2"
-                                                    type="checkbox"
-                                                    value=""
-                                                    id="form2Example3cg"
-                                                />
-                                                <label className="form-check-label" for="form2Example3g">
-                                                    I agree all statements in <a href="#!" className="text-body"><u>Terms of service</u></a>
-                                                </label>
-                                            </div>
+                {/*  */}
 
-                                            <div className="d-flex justify-content-center">
-                                                <button type="button" className="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
-                                            </div>
 
-                                            <p className="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" className="fw-bold text-body"><u>Login here</u></a></p>
+                <Form>
 
-                                        </form>
+                    <label>EmailAddress</label>
+                    <Field name="EmailAddress" /* placeholder="Example@gmail.com" */ /><br></br>
+                    <Kerror name="EmailAddress" />
+                    {/* password field */}
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <label >CreatePassword</label>
+                    <Field name="CreatePassword" placeholder="" type="password" />
+                    <Kerror name="CreatePassword"/>
+                    {/* drop down for phone no */}
+                    {/* <br></br> */}
+                    <div>
+                       
+                    
+                        {/* <br></br> */}
+                        <label name="MobileNo">ContacNo </label>
+                         <select name="dropdown">
+                            <option value="India">India(+91)</option>
+                            <option value="saab">SriLanka(+94)</option>
+                            <option value="mercedes">Bangladesh(+880)</option>
+                        </select>
+                        
+                        
+                        <input type="number"></input>
+                            <Kerror/>
                     </div>
-                </div>
-            </section>
+                    <div>
+                        <label >PROFILE CREATING FOR </label>
+                        
+                        {/* <br></br> */}
+                        
+                        <select name='profilecreatingfor'  >
+                            <option >SELECT</option>
+                            <option >MALE</option>
+                            <option >FEMALE</option>
+                            <option >OTHER</option>
+                        </select>
+                        <br></br>
+                        <label>DateOfBirth</label>
+                        <Field name="DateOfBirth" type="date"/>
+                        <Kerror/>
+
+                    </div>
+
+                    <div>
+                        <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                        <label className="form-check-label" for="form2Example3g">
+                            I agree all statements in <a href="#!" className="text-body"><u>Terms of service</u></a>
+                        </label>
+                    </div>
+
+                    <Button variant="contained">SUBMIT</Button>
+
+                    <p >Have already an account? <Button variant="contained" color="error">Login here</Button></p>
+                </Form>
+            </Formik>
+
+
         </div>
-    );
+    )
 }
 
-export default Register;
+export default RegisterSelf;

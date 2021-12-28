@@ -10,7 +10,8 @@ import { Mainregister } from './Mainregister';
 
 import { green, purple } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { Button } from '@mui/material';
+ import Api from './Components/Api';
 
 const theme = createTheme({
   palette: {
@@ -49,9 +50,15 @@ function App() {
          {/* router implimintation  */}    
 
         </div>
+        {/* API TESTING */}
+        {/* <div><Api/></div> */}
       {/* <Registration/>  --------------registration page*/}
       </BrowserRouter>
       </ThemeProvider>
+      <Api/> 
+
+     
+   
     </>
 
   );

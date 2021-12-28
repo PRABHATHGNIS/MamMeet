@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
+import {Signup, SignUp} from '../src/Home_Com/Signup'
+import Register from '../src/Home_Com/RegisterSelf';
 
 
 ReactDOM.render(
 <>
  <App />
+ {/* <Signup/> */}
+ {/* <Register/> */}
   </>
    ,document.getElementById('root')
 );
